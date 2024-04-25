@@ -15,6 +15,7 @@ steps:
         cd build
 
         ../configure \
+            --build=${BUILD} \
             --prefix=/usr \
             --with-internal-glib \
             --disable-host-tool

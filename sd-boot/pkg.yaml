@@ -2,8 +2,12 @@ name: sd-boot
 dependencies:
   - stage: base
   - stage: coreutils
+  - stage: cmake
+  - stage: curl
+  - stage: expat
   - stage: gperf
   - stage: libcap
+  - stage: libuv
   - stage: meson
     runtime: true
   - stage: openssl
@@ -13,7 +17,9 @@ dependencies:
   - stage: pkg-config
     runtime: true
   - stage: python3
+  - stage: rhash
   - stage: util-linux
+  - stage: xz
 steps:
   - sources:
       - url: https://github.com/systemd/systemd/archive/refs/tags/v{{ .systemd_version }}.tar.gz

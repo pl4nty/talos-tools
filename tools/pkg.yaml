@@ -22,7 +22,8 @@ dependencies:
   - stage: dwarfutils
   - stage: elfutils
   - stage: expat
-  - stage: expect
+  # https://core.tcl-lang.org/expect/file?name=tclconfig/config.sub&ci=tip
+  # - stage: expect
   - stage: file
   - stage: findutils
   - stage: flex

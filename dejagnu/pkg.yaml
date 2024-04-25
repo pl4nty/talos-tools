@@ -1,7 +1,6 @@
 name: dejagnu
 dependencies:
   - stage: base
-  - stage: expect
   - stage: tcl
 steps:
   - sources:

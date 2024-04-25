@@ -17,6 +17,7 @@ steps:
         sed -i "/math.h/a #include <malloc.h>" ../src/flexdef.h
 
         ../configure \
+            --build=${BUILD} \
             --prefix=${TOOLCHAIN}
     build:
       - |

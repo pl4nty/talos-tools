@@ -35,6 +35,7 @@ dependencies:
   - stage: libtool
   - stage: tools-libunistring
   - stage: libuv
+  - stage: lua
   - stage: m4
   - stage: meson
   - stage: mpc

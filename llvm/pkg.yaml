@@ -40,6 +40,8 @@ steps:
         cmake --build build-stage1
       - |
         # Stage 2: rebuild full LLVM using the stage 1 clang+lld, with ThinLTO.
+        # Skip ThinLTO on riscv64, segfaults ld.lld while linking libLLVM.so
+        # Saw warnings like https://github.com/llvm/llvm-project/issues/69780
         STAGE1=$(pwd)/build-stage1
         # Stage 1 clang doesn't auto-detect the toolchain image's GCC install
         # dir, so point it explicitly — dirname of libgcc.a is the install dir.
@@ -63,9 +65,9 @@ steps:
               -DLLVM_INCLUDE_BENCHMARKS=OFF \
               -DLLVM_ENABLE_BINDINGS=OFF \
               -DLLVM_INSTALL_UTILS=ON \
-              -DLLVM_TARGETS_TO_BUILD="X86;AArch64" \
+              -DLLVM_TARGETS_TO_BUILD="RISCV" \
               -DLLVM_ENABLE_ASSERTIONS=OFF \
-              -DLLVM_ENABLE_LTO=Thin
+              -DLLVM_ENABLE_LTO={{ if eq .ARCH "riscv64" }}OFF{{ else }}Thin{{ end }}
         cmake --build build
     install:
       - |
